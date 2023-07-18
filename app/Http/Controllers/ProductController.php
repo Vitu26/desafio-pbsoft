@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Http\Requests\ProductStoreRequest;
 use Illuminate\Support\Facades\Storage;
 
+
 class ProductController extends Controller
 {
     /**
@@ -21,6 +22,8 @@ class ProductController extends Controller
        return response()->json([
           'products' => $products
        ],200);
+       $products = Product::paginate(10);
+        return view('index', compact('stock'));
     }
 
     /**
@@ -51,12 +54,13 @@ class ProductController extends Controller
                 'message' => "Something went really wrong!"
             ],500);
         }
+        return view('create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProductStoreRequest $request)
     {
         try {
 
@@ -144,29 +148,31 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy( $id)
+
+    public function destroy($id)
     {
-          // Detail
-          $product = Product::find($id);
-          if(!$product){
-            return response()->json([
-               'message'=>'Product Not Found.'
-            ],404);
-          }
-
-          // Public storage
-          $storage = Storage::disk('public');
-
-
-          // Delete Product
-          $product->delete();
-
-          // Return Json Response
+        // Detail
+        $product = Product::find($id);
+        if(!$product){
           return response()->json([
-              'message' => "Product successfully deleted."
-          ],200);
-      }
+             'message'=>'Product Not Found.'
+          ],404);
+        }
+
+        // Public storage
+        $storage = Storage::disk('public');
+
+        // Delete Product
+        $product->delete();
+
+        // Return Json Response
+        return response()->json([
+            'message' => "Product successfully deleted."
+        ],200);
     }
+
+
+}
 
 
 

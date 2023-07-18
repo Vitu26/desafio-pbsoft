@@ -25,18 +25,18 @@ class ProductStoreRequest extends FormRequest
         if(request()->isMethod('post')) {
             return [
                 'name' => 'required|string|max:258',
-                'value' => 'required|string',
+                'value' => 'required|numeric',
                 'description' => 'required|string',
-                'quanty' => 'required|string',
-                'category' => 'required|string'
+                'quanty' => 'required|numeric',
+                'category' => 'required'
             ];
         } else {
             return [
                 'name' => 'required|string|max:258',
-                'value' => 'required|string',
+                'value' => 'required|numeric',
                 'description' => 'required|string',
-                'quanty' => 'required|string',
-                'category' => 'required|string'
+                'quanty' => 'required|numeric',
+                'category' => 'required'
             ];
         }
     }
