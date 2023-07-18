@@ -9,13 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class HomeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
 
-    private $my_product;
 
     public function index()
     {
@@ -23,25 +17,16 @@ class HomeController extends Controller
         return view('index', compact('products'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         return view('create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(ProductStoreRequest $request)
     {
-        $cad = Product::create([
+        $register= Product::create([
             'name' => $request->name,
             'description' => $request->description,
             'category' => $request->category,
@@ -49,7 +34,7 @@ class HomeController extends Controller
             'quanty' => $request->quanty,
 
         ]);
-        if ($cad) {
+        if ($register) {
             return redirect('stock');
         }
     }
@@ -78,13 +63,7 @@ class HomeController extends Controller
         return view('create', compact('products'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(ProductStoreRequest $request, $id)
     {
         Product::where(['id' => $id])->update([

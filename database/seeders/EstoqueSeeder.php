@@ -11,30 +11,30 @@ class EstoqueSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run(Product $product): void
     {
-        $products::create([
+        $product::create([
             'name' => 'teste1',
             'description' => 'teste descricão',
-            'category' => 'teste categoria',
-            'value' => 'teste preço',
-            'quanty' => 'teste quantidade'
+            'category' => 'outro tipo',
+            'value' => '12.00',
+            'quanty' => '6'
         ]);
 
-        $products::create([
+        $product::create([
             'name' => 'teste2',
             'description' => 'teste descricão2',
-            'category' => 'teste categoria2',
-            'value' => 'teste preço2',
-            'quanty' => 'teste quantidade2'
+            'category' => 'outro tipo',
+            'value' => '3.00',
+            'quanty' => '2'
         ]);
 
-        $products::create([
+        $product::create([
             'name' => 'teste3',
-            'descriptiono' => 'teste descricão3',
-            'categoria' => 'teste categoria3',
-            'pvalue' => 'teste preço3',
-            'quanty' => 'teste quantidade3'
+            'description' => 'teste descricão3',
+            'category' => 'outro tipo',
+            'value' => '250.00',
+            'quanty' => '2'
         ]);
     }
 }
