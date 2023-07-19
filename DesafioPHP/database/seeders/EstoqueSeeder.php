@@ -16,7 +16,7 @@ class EstoqueSeeder extends Seeder
         $product::create([
             'name' => 'teste1',
             'description' => 'teste descricão',
-            'category' => 'outro tipo',
+            'category' => 'teste',
             'value' => '12.00',
             'quanty' => '6'
         ]);
@@ -24,7 +24,7 @@ class EstoqueSeeder extends Seeder
         $product::create([
             'name' => 'teste2',
             'description' => 'teste descricão2',
-            'category' => 'outro tipo',
+            'category' => 'teste',
             'value' => '3.00',
             'quanty' => '2'
         ]);
@@ -32,7 +32,7 @@ class EstoqueSeeder extends Seeder
         $product::create([
             'name' => 'teste3',
             'description' => 'teste descricão3',
-            'category' => 'outro tipo',
+            'category' => 'teste',
             'value' => '250.00',
             'quanty' => '2'
         ]);

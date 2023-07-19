@@ -9,13 +9,13 @@
             </div>
             <div class="card-body">
                 <p class="card-text">
-                    Identificador: {{ $products->id }}
+                    Identificador: {{ $products->id }}</p>
                 <p>Descrição: {{ $products->description }}</p>
                 <p>Quantidade: {{ $products->quanty }}</p>
                 <p> Preço: R${{ $products->value }} </p>
-                </p>
-                <!-- Possiveis tags -->
-                <p class="tags">Tags: <a href="#" class="">{{ $products->category }}</a></p>
+
+
+                <p class="tags">Categoria: {{ $products->category }}</p>
             </div>
         </div>
     </div>
