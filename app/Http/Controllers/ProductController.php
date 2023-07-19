@@ -171,6 +171,85 @@ class ProductController extends Controller
         ],200);
     }
 
+    //funções para views
+    public function indexForView()
+    {
+        $products = Product::paginate(10);
+        return view('index', compact('products'));
+    }
+
+
+    public function createForView()
+    {
+        return view('create');
+    }
+
+
+    public function storeForView(ProductStoreRequest $request)
+    {
+        $register= Product::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'category' => $request->category,
+            'value' => $request->value,
+            'quanty' => $request->quanty,
+
+        ]);
+        if ($register) {
+            return redirect('stock');
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showForView($id)
+    {
+        $products = Product::find($id);
+        return redirect('stock');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editForView($id)
+    {
+        $products = Product::find($id);
+        return view('create', compact('products'));
+    }
+
+
+    public function updateForView(ProductStoreRequest $request, $id)
+    {
+        Product::where(['id' => $id])->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'category' => $request->category,
+            'value' => $request->value,
+            'quanty' => $request->quanty,
+        ]);
+        return redirect('stock');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyForView($id)
+    {
+        Product::destroy($id);
+        return redirect('stock');
+    }
+
+
 
 }
 

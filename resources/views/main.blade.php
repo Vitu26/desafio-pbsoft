@@ -13,17 +13,22 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ asset('dist/import.css') }}">
+    
 
     <title>Desafio PHP</title>
+    <link rel="stylesheet" href="/css/app.css">
 </head>
 
 <body>
-    <div class="page_main">
-        <a href="{{ url('stock') }}">
-            <p class="animated-word">Play</p>
-        </a>
-    </div>
+    <section class="main">
+        <div class="page_main">
+            <button type="button" class="btn btn-secondary">
+            <a href="{{ url('products') }}">
+                <p>Play</p>
+            </a>
+            </button>
+        </div>
+    </section>
 </body>
 
 </html>

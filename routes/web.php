@@ -16,7 +16,7 @@ use App\Models\Product;
 |
 */
 
-Route::resource('/stock', HomeController::class);
+Route::resource('/products', HomeController::class);
 
 Route::get('/', function(){
     return view('main');

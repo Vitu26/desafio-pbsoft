@@ -13,7 +13,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ asset('dist/import.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('dist/app.css') }}"> --}}
+    <link rel="stylesheet" href="/css/app.css">
 
     <title>Estoque - Produtos</title>
 </head>
@@ -21,8 +22,17 @@
 <body>
     <!-- Cabeçalho basico -->
     <div id="header">
-        <h1 class="header-title"><a href="{{ url('stock') }}">Desafio Estoque</a></h1>
-        <a href="{{ url('stock/create') }}" class="btn_orange">Cadastrar</a>
+        <div id="header-div1">
+            <h1 class="header-title"><a href="{{ url('products') }}">Desafio Estoque</a></h1>
+        </div>
+        <div id="header-div2">
+            <button type="button" class="btn btn-success">
+                <a href="{{ url('products/create') }}" class="btn_orange">Cadastrar</a>
+            </button>
+
+        </div>
+
+
     </div>
     @yield('content')
 </body>

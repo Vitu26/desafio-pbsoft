@@ -1,12 +1,11 @@
 
-
-@extends('templates.template');
+@extends('templates.template')
 <!-- Template principal -->
 @section('content')
 
     <!-- Tabela de dados -->
     <div class="container text-center" id="main">
-        <table class="table table-bordered table-dark" id="table-main">
+        <table class="table table-bordered table table-sm" id="table-main">
             <thead>
                 <tr>
                     <th scope="col">Id</th>
@@ -14,7 +13,7 @@
                     <th scope="col">Descrição</th>
                     <th scope="col">Categoria</th>
                     <th scope="col">Preço</th>
-                    <th scope="col">QTD</th>
+                    <th scope="col">Quantidade</th>
                     <th scope="col">Ações</th>
                 </tr>
             </thead>
@@ -34,16 +33,16 @@
                         <td>R${{ $product->value }}</td>
                         <td>{{ $product->quanty }}</td>
                         <td class="link-buttons">
-                            <a href='{{ url('stock/' . $product->id) }}'>
-                                <button class="btn_white">Visualizar</button>
+                            <a href='{{ url('products/' . $product->id) }}'>
+                                <button class="btn btn-info">Visualizar</button>
                             </a>
-                            <a href="{{ url('stock/' . $product->id . '/edit') }}">
-                                <button class="btn_blue">Editar</button>
+                            <a href="{{ url('products/' . $product->id . '/edit') }}">
+                                <button class="btn btn-primary">Editar</button>
                             </a>
-                            <form action="{{ url('stock/' . $product->id) }}" method="POST">
+                            <form action="{{ url('products/' . $product->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn_red">Excluir</button>
+                                <button class="btn btn-danger">Excluir</button>
                             </form>
                         </td>
                     </tr>

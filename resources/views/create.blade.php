@@ -1,33 +1,36 @@
-@extends('templates.template');
+@extends('templates.template')
 
 <!-- Template de edição e exclusão -->
 @section('content')
     <div class="container" id="form_cad-edit">
 
-        <!-- Titulo -->
+        <!-- Titulo/ dependendo o botão apertado -->
         <h1 class="text-center title-form">@if (isset($products))Editar Produto @else Cadastro @endif</h1>
 
-        <!-- Tratamento de erros backend ( vinculado diretamente com a ProdutoResquest) -->
+        <!-- Tratamento de erros -->
         @if (isset($errors) && count($errors) > 0)
             @foreach ($errors->all() as $erro)
                 <p class="text-center alert-danger">{{ $erro }}</p>
             @endforeach
         @endif
+        <br>
 
         <!-- Escolha do metodo a ser enviado, definindo se é o template de edição ou cadastro-->
         @if (isset($products))
-            <form name="edit" id="edit" method="POST" action="{{ url('stock/' . $products->id) }}">
+            <form name="edit" id="edit" method="POST" action="{{ url('products/' . $products->id) }}">
                 @method('PUT')
             @else
-                <form name="cadastro" id="cad" method="POST" action="{{ url('stock') }}">
+                <form name="cadastro" id="cad" method="POST" action="{{ url('products') }}">
         @endif
         @csrf
 
-        <!-- As entradas so exibiram algo em caso de haver a varivel sendo enviada via url -->
-        <input type="text" class="form-control input-txt" placeholder="Nome do Produto" name="name"
+
+        <!-- Para exibir informações caso seja na opção editar -->
+        <input id="i1" type="text" class="form-control input-txt" placeholder="Nome do Produto" name="name"
             value='{{ $products->name ?? '' }}' required>
 
-        <input type="text" class="form-control input-txt" placeholder="Descrição" name="description"
+
+        <input id="i2" type="text" class="form-control input-txt" placeholder="Descrição" name="description"
             value='{{ $products->description ?? '' }}' required>
 
         <!-- Apenas em caso de edição sera exibido lateralmente a categoria -->
@@ -38,17 +41,17 @@
                 </div>
         @endif
 
-        <select class="form-control input-txt" name="category">
+        <select id="i3" class="form-control input-txt" name="category">
             <option value="Sem categoria selecionada">Selecione a categoria</option>
-            <option value="Bens duráveis">Bem duráveis</option>
-            <option value="Não-duráveis">Não-duráveis</option>
-            <option value="De Conveniência">De Conveniência</option>
+            <option value="Limpeza">Limpeza</option>
+            <option value="Alimentação">Alimentação</option>
+            <option value="Materiais de Construção">Materiais de Construção</option>
             <option value="Produtos Industriais">Produtos Industriais</option>
-            <option value="Outro tipo">Outro tipo</option>
+            <option value="Teste">Teste</option>
         </select>
         @if (isset($products))</div> @endif
 
-        <div class="row">
+        <div id="i4" class="row">
             <div class="col-md-6">
                 <div class="input-group">
                     <div class="input-group-append">
@@ -64,7 +67,7 @@
             </div>
         </div>
         <div class="text-center">
-            <button class="btn_blue input-txt"> Salvar</button>
+            <button class="btn btn-success"> Salvar</button>
         </div>
     </div>
     </form>

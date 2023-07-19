@@ -35,7 +35,7 @@ class HomeController extends Controller
 
         ]);
         if ($register) {
-            return redirect('stock');
+            return redirect('products');
         }
     }
 
@@ -47,8 +47,8 @@ class HomeController extends Controller
      */
     public function show($id)
     {
-        $products = Product::find($id);
-        return redirect('stock');
+        $products= Product::find($id);
+        return view('show', compact('products'));
     }
 
     /**
@@ -73,7 +73,7 @@ class HomeController extends Controller
             'value' => $request->value,
             'quanty' => $request->quanty,
         ]);
-        return redirect('stock');
+        return redirect('products');
     }
 
     /**
@@ -85,6 +85,6 @@ class HomeController extends Controller
     public function destroy($id)
     {
         Product::destroy($id);
-        return redirect('stock');
+        return redirect('products');
     }
 }
